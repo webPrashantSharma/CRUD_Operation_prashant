@@ -1,0 +1,54 @@
+﻿@model IEnumerable<CRUD_Operation.Models.Product_Master>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<br />
+<h4 class="text-center" style="font-family:Elephant;font-size:35px;">Product Details</h4>
+<table class="table table-striped table-hover"id="mytable">
+    <thead>
+        <tr>
+            <th style="background-color:#070101e6;color:white;">
+                @Html.DisplayNameFor(model => model.ProductId)
+            </th>
+            <th style="background-color: #070101e6; color: white;">
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th style="background-color: #070101e6; color: white;">
+                @Html.DisplayNameFor(model => model.Catagory_Id)
+            </th>
+            <th style="background-color: #070101e6; color: white;">
+                @Html.DisplayNameFor(model => model.Catagory)
+            </th>
+            <th style="background-color: #070101e6; color: white;">Manage</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Catagory_Id)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tbl_Catagory.Catagory_Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+                </td>
+            </tr>
+        }
+    </tbody>
+   
+
+</table>

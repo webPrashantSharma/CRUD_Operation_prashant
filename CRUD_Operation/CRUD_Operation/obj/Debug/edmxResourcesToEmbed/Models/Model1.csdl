@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PrasantModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Product_Master">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Catagory_Id" Type="Int32" />
+    <Property Name="Catagory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Tbl_Catagory" Relationship="Self.FK_Product_Master_Tbl_Catagory" FromRole="Product_Master" ToRole="Tbl_Catagory" />
+  </EntityType>
+  <EntityType Name="Tbl_Catagory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Catagory_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Product_Master" Relationship="Self.FK_Product_Master_Tbl_Catagory" FromRole="Tbl_Catagory" ToRole="Product_Master" />
+  </EntityType>
+  <Association Name="FK_Product_Master_Tbl_Catagory">
+    <End Role="Tbl_Catagory" Type="Self.Tbl_Catagory" Multiplicity="0..1" />
+    <End Role="Product_Master" Type="Self.Product_Master" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Catagory">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Product_Master">
+        <PropertyRef Name="Catagory_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PrasantEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Product_Master" EntityType="Self.Product_Master" />
+    <EntitySet Name="Tbl_Catagory" EntityType="Self.Tbl_Catagory" />
+    <AssociationSet Name="FK_Product_Master_Tbl_Catagory" Association="Self.FK_Product_Master_Tbl_Catagory">
+      <End Role="Tbl_Catagory" EntitySet="Tbl_Catagory" />
+      <End Role="Product_Master" EntitySet="Product_Master" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

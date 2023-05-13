@@ -1,0 +1,69 @@
+﻿@model CRUD_Operation.Models.Product_Master
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8 bg-info p-5">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4 class="text-center text-bg-danger" style="font-family:Elephant;font-size:35px;">Product Details</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row form-group mb-3">
+                    <div class="col-sm-6">
+                        &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp; &emsp;@Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    </div>
+                    <div class="col-sm-6">
+                        @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row form-group mb-3">
+                    <div class="col-sm-6">
+                        &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp; &emsp;@Html.LabelFor(model => model.Catagory_Id, "Catagory_Id", htmlAttributes: new { @class = "control-label col-md-2" })
+                    </div>
+                    <div class="col-sm-6">
+                        @Html.DropDownList("Catagory_Id", ViewBag.Cors1 as SelectList, "--select catagory_Id--", htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Catagory_Id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row form-group mb-3">
+                    <div class="col-sm-6">
+                        &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp; &emsp; @Html.LabelFor(model => model.Catagory, "Catagory", htmlAttributes: new { @class = "control-label col-md-2" })
+                    </div>
+                    <div class="col-sm-6">
+                        @Html.DropDownList("Catagory", ViewBag.Cors2 as SelectList, "--select catagory_Name--", htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Catagory, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-6">
+                        &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp; &emsp;<input type="submit" value="Create" class="btn btn-success" />
+                    </div>
+                    <div class="col-sm-6">
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+                </div>
+            </div>
+        }
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+
+
+
+

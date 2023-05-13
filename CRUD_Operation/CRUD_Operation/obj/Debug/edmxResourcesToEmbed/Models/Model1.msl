@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PrasantModelStoreContainer" CdmEntityContainer="PrasantEntities">
+    <EntitySetMapping Name="Product_Master">
+      <EntityTypeMapping TypeName="PrasantModel.Product_Master">
+        <MappingFragment StoreEntitySet="Product_Master">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Catagory_Id" ColumnName="Catagory_Id" />
+          <ScalarProperty Name="Catagory" ColumnName="Catagory" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Catagory">
+      <EntityTypeMapping TypeName="PrasantModel.Tbl_Catagory">
+        <MappingFragment StoreEntitySet="Tbl_Catagory">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Catagory_Name" ColumnName="Catagory_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
